@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GraceSoft - Your trusted partner in software solutions. We provide innovative and reliable software development services.">
+    <meta name="keywords" content="software development, web development, mobile apps, custom software, technology solutions, GraceSoft">
+    <meta name="author" content="GraceSoft">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en">
+    <meta name="theme-color" content="#5048E5">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GraceSoft - Landing Page">
+    <meta property="og:description" content="Your trusted partner in software solutions. We provide innovative and reliable software development services.">
+    <meta property="og:image" content="logo.svg">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="GraceSoft">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="GraceSoft - Landing Page">
+    <meta property="twitter:description" content="Your trusted partner in software solutions. We provide innovative and reliable software development services.">
+    <meta property="twitter:image" content="logo.svg">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="logo.svg">
+    <title>GraceSoft - Landing Page</title>
+</head>
+<body class="flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <div>
+        <!-- Navigation -->
+        <nav class="flex justify-center py-6">
+            <img src="logo.svg" alt="GraceSoft Logo" class="h-12">
+        </nav>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <!-- Hero Section -->
+            <div class="text-center mb-16">
+                <div class="mb-8">
+                    <h1 class="sr-only">GraceSoft</h1>
+                    <div class="w-24 h-1 bg-[#5048E5] mx-auto mb-8"></div>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-light text-gray-800 mb-6">Coming Soon</h2>
+                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    We're crafting exceptional software solutions that will transform your business. 
+                    Get ready for innovation, reliability, and excellence.
+                </p>
+            </div>
+
+            <div class="max-w-md mx-auto mb-16">
+                <h3 class="text-2xl font-semibold text-center text-gray-800 mb-6">Stay Updated</h3>
+                <p class="text-center text-gray-600 mb-6">Be the first to know when we launch. Join our exclusive waitlist.</p>
+                <form class="space-y-4" id="emailForm">
+                    <!-- Honeypot field - hidden from users but visible to bots -->
+                    <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+                        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                        <input type="email" name="email_confirm" id="email_confirm" tabindex="-1" autocomplete="off">
+                    </div>
+                    
+                    <div class="relative">
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="Enter your email address"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:border-transparent"
+                            id="emailInput"
+                            required
+                        >
+                    </div>
+                    <button 
+                        type="submit"
+                        class="w-full bg-indigo-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-900 transition-colors duration-300 transform hover:scale-105 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                        id="submitBtn"
+                    >
+                        Notify Me
+                    </button>
+                </form>
+                <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center">
+                    Thank you! We'll notify you when we launch.
+                </div>
+                <div id="errorMessage" class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded-lg text-center">
+                    Please try again in a moment.
+                </div>
+            </div>
+
+            <!-- Features Preview -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-indigo-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Custom Development</h4>
+                    <p class="text-gray-600">Tailored software solutions built to meet your unique business requirements.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-indigo-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">High Performance</h4>
+                    <p class="text-gray-600">Lightning-fast applications optimized for speed and scalability.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-indigo-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Reliable & Secure</h4>
+                    <p class="text-gray-600">Enterprise-grade security and reliability you can trust.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-gray-500">
+            <p>&copy; 2026 GraceSoft. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="privacy-policy.html" class="hover:text-[#5048E5] transition-colors duration-300">Privacy Policy</a>
+                <a href="terms-of-service.html" class="hover:text-[#5048E5] transition-colors duration-300">Terms of Service</a>
+                <a href="#" onclick="openContactDialog()" class="hover:text-[#5048E5] transition-colors duration-300">Contact</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Contact Dialog -->
+    <dialog id="contactDialog" class="rounded-lg shadow-xl border-0 p-0 backdrop:bg-black backdrop:bg-opacity-50" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0;">
+        <div class="bg-white rounded-lg p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold text-gray-800">Contact Us</h3>
+                <button onclick="closeContactDialog()" class="text-gray-400 hover:text-gray-600 transition-colors duration-300 text-2xl">
+                    &times;
+                </button>
+            </div>
+            
+            <form id="contactForm" class="space-y-4">
+                <!-- Honeypot fields -->
+                <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+                    <input type="text" name="website_url" id="website_url" tabindex="-1" autocomplete="off">
+                    <input type="email" name="backup_email" id="backup_email" tabindex="-1" autocomplete="off">
+                </div>
+                
+                <div>
+                    <label for="contactName" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                    <input 
+                        type="text" 
+                        id="contactName"
+                        name="name"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5048E5] focus:border-transparent"
+                        placeholder="Your full name"
+                    >
+                </div>
+                
+                <div>
+                    <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                    <input 
+                        type="email" 
+                        id="contactEmail"
+                        name="email"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5048E5] focus:border-transparent"
+                        placeholder="your@email.com"
+                    >
+                </div>
+                
+                <div>
+                    <label for="contactSubject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                    <select 
+                        id="contactSubject"
+                        name="subject"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5048E5] focus:border-transparent bg-white"
+                    >
+                        <option value="">Select a topic...</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Custom Software Development">Custom Software Development</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="Enterprise Solutions">Enterprise Solutions</option>
+                        <option value="Technical Support">Technical Support</option>
+                        <option value="Partnership Opportunity">Partnership Opportunity</option>
+                        <option value="Quote Request">Quote Request</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="contactMessage" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                    <textarea 
+                        id="contactMessage"
+                        name="message"
+                        required
+                        rows="4"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5048E5] focus:border-transparent resize-none"
+                        placeholder="Tell us about your project or inquiry..."
+                    ></textarea>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button 
+                        type="button"
+                        onclick="closeContactDialog()"
+                        class="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-300"
+                    >
+                        Cancel
+                    </button>
+                    <button 
+                        type="submit"
+                        id="contactSubmitBtn"
+                        class="flex-1 bg-indigo-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#4338CA] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Send Message
+                    </button>
+                </div>
+            </form>
+            
+            <div id="contactSuccessMessage" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center">
+                Thank you! Your message has been sent successfully.
+            </div>
+            
+            <div id="contactErrorMessage" class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded-lg text-center">
+                Please try again in a moment.
+            </div>
+        </div>
+    </dialog>
+
+    <script>
+        // Bot protection variables
+        let formLoadTime = Date.now();
+        let submissionAttempts = 0;
+        const maxAttempts = 3;
+        const minFormTime = 2000; // Minimum 2 seconds before submission allowed
+
+        // Email form handling with bot protection
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const email = document.getElementById('emailInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Hide previous messages
+            errorMessage.classList.add('hidden');
+            successMessage.classList.add('hidden');
+            
+            // Bot protection checks
+            if (!isValidSubmission()) {
+                showError();
+                return;
+            }
+            
+            // Disable button during processing
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            
+            // Simulate processing delay (also helps against rapid submissions)
+            setTimeout(() => {
+                if (email) {
+                    // Here you would typically send the email to your server
+                    console.log('Email submitted:', email);
+                    
+                    // Show success message
+                    document.getElementById('emailForm').classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                } else {
+                    showError();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Notify Me';
+                }
+            }, 1000);
+        });
+        
+        function isValidSubmission() {
+            // Check honeypot fields
+            const website = document.getElementById('website').value;
+            const emailConfirm = document.getElementById('email_confirm').value;
+            if (website || emailConfirm) {
+                console.log('Bot detected: honeypot field filled');
+                return false;
+            }
+            
+            // Check submission timing (too fast = likely bot)
+            const timeSinceLoad = Date.now() - formLoadTime;
+            if (timeSinceLoad < minFormTime) {
+                console.log('Bot detected: form submitted too quickly');
+                return false;
+            }
+            
+            // Check submission attempts
+            submissionAttempts++;
+            if (submissionAttempts > maxAttempts) {
+                console.log('Bot detected: too many attempts');
+                return false;
+            }
+            
+            // Basic email validation
+            const email = document.getElementById('emailInput').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                console.log('Invalid email format');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function showError() {
+            document.getElementById('errorMessage').classList.remove('hidden');
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Notify Me';
+        }
+        
+        // Contact Dialog Functions
+        let contactFormLoadTime = Date.now();
+        let contactSubmissionAttempts = 0;
+        
+        function openContactDialog() {
+            document.getElementById('contactDialog').showModal();
+            contactFormLoadTime = Date.now(); // Reset timer when dialog opens
+        }
+        
+        function closeContactDialog() {
+            document.getElementById('contactDialog').close();
+            // Reset form
+            document.getElementById('contactForm').reset();
+            document.getElementById('contactSuccessMessage').classList.add('hidden');
+            document.getElementById('contactErrorMessage').classList.add('hidden');
+            document.getElementById('contactSubmitBtn').disabled = false;
+            document.getElementById('contactSubmitBtn').textContent = 'Send Message';
+        }
+        
+        // Contact form handling with bot protection
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const errorMessage = document.getElementById('contactErrorMessage');
+            const successMessage = document.getElementById('contactSuccessMessage');
+            
+            // Hide previous messages
+            errorMessage.classList.add('hidden');
+            successMessage.classList.add('hidden');
+            
+            // Bot protection checks
+            if (!isValidContactSubmission()) {
+                showContactError();
+                return;
+            }
+            
+            // Disable button during processing
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                subject: document.getElementById('contactSubject').value,
+                message: document.getElementById('contactMessage').value
+            };
+            
+            // Simulate sending email (replace with actual email service)
+            setTimeout(() => {
+                // Create mailto link as fallback
+                const mailtoLink = `mailto:leong.shi.yun@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+                    `Name: ${formData.name}\n` +
+                    `Email: ${formData.email}\n` +
+                    `Subject: ${formData.subject}\n\n` +
+                    `Message:\n${formData.message}`
+                )}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                console.log('Contact form submitted:', formData);
+                successMessage.classList.remove('hidden');
+                
+                // Close dialog after 2 seconds
+                setTimeout(() => {
+                    closeContactDialog();
+                }, 2000);
+            }, 1000);
+        });
+        
+        function isValidContactSubmission() {
+            // Check honeypot fields
+            const websiteUrl = document.getElementById('website_url').value;
+            const backupEmail = document.getElementById('backup_email').value;
+            if (websiteUrl || backupEmail) {
+                console.log('Bot detected: contact honeypot field filled');
+                return false;
+            }
+            
+            // Check submission timing
+            const timeSinceLoad = Date.now() - contactFormLoadTime;
+            if (timeSinceLoad < 3000) { // 3 seconds minimum for contact form
+                console.log('Bot detected: contact form submitted too quickly');
+                return false;
+            }
+            
+            // Check submission attempts
+            contactSubmissionAttempts++;
+            if (contactSubmissionAttempts > 5) {
+                console.log('Bot detected: too many contact attempts');
+                return false;
+            }
+            
+            // Validate required fields
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const subject = document.getElementById('contactSubject').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                console.log('Missing required fields');
+                return false;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                console.log('Invalid email format');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function showContactError() {
+            document.getElementById('contactErrorMessage').classList.remove('hidden');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    </script>
+</body>
+</html>
