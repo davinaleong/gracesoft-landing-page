@@ -62,38 +62,15 @@
             </div>
 
             <div class="max-w-md mx-auto mb-16">
-                <h3 class="text-2xl font-semibold text-center text-gray-800 mb-6">Stay Updated</h3>
-                <p class="text-center text-gray-600 mb-6">Be the first to know when we launch. Join our exclusive waitlist.</p>
-                <form class="space-y-4" id="emailForm">
-                    <!-- Honeypot field - hidden from users but visible to bots -->
-                    <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
-                        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-                        <input type="email" name="email_confirm" id="email_confirm" tabindex="-1" autocomplete="off">
-                    </div>
-                    
-                    <div class="relative">
-                        <input 
-                            type="email" 
-                            name="email"
-                            placeholder="Enter your email address"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:border-transparent"
-                            id="emailInput"
-                            required
-                        >
-                    </div>
+                <h3 class="text-2xl font-semibold text-center text-gray-800 mb-6">Get in Touch</h3>
+                <p class="text-center text-gray-600 mb-6">Ready to transform your business with cutting-edge software solutions?</p>
+                <div class="text-center">
                     <button 
-                        type="submit"
-                        class="w-full bg-indigo-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-900 transition-colors duration-300 transform hover:scale-105 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                        id="submitBtn"
+                        onclick="openContactDialog()"
+                        class="bg-indigo-800 text-white py-3 px-8 rounded-lg font-semibold hover:bg-indigo-900 transition-colors duration-300 transform hover:scale-105 cursor-pointer"
                     >
-                        Notify Me
+                        Contact Us Today
                     </button>
-                </form>
-                <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center">
-                    Thank you! We'll notify you when we launch.
-                </div>
-                <div id="errorMessage" class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded-lg text-center">
-                    Please try again in a moment.
                 </div>
             </div>
 
