@@ -2,8 +2,8 @@
 // Countdown Timer and other website functions
 
 // API Configuration
-const API_BASE_URL = 'https://gracesoft-backoffice.test';
-// const API_BASE_URL = 'https://backoffice.gracesoft.dev'; // Production
+// const API_BASE_URL = 'https://gracesoft-backoffice.test';
+const API_BASE_URL = 'https://backoffice.gracesoft.dev'; // Production
 
 // Countdown Timer to May 4th, 2026
 function initCountdownTimer() {
