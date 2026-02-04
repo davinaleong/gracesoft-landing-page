@@ -1,6 +1,10 @@
 // GraceSoft Landing Page - Main JavaScript
 // Countdown Timer and other website functions
 
+// API Configuration
+const API_BASE_URL = 'https://gracesoft-backoffice.test';
+// const API_BASE_URL = 'https://backoffice.gracesoft.dev'; // Production
+
 // Countdown Timer to May 4th, 2026
 function initCountdownTimer() {
     const targetDate = new Date('May 4, 2026 00:00:00').getTime();
@@ -47,10 +51,22 @@ document.addEventListener('DOMContentLoaded', function() {
     loadContactSubjects();
 });
 
+// Get client IP address
+async function getClientIP() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        console.error('Failed to get client IP:', error);
+        return null;
+    }
+}
+
 // Load contact subjects from API
 async function loadContactSubjects() {
     try {
-        const response = await fetch('https://backoffice.gracesoft.dev/api/contact/subjects');
+        const response = await fetch(`${API_BASE_URL}/api/contact/subjects`);
         const subjects = await response.json();
         
         const subjectSelect = document.getElementById('contactSubject');
@@ -182,10 +198,12 @@ function showError() {
 // Contact Dialog Functions
 let contactFormLoadTime = Date.now();
 let contactSubmissionAttempts = 0;
+let contactFormStartTime = null;
 
 function openContactDialog() {
     document.getElementById('contactDialog').showModal();
     contactFormLoadTime = Date.now(); // Reset timer when dialog opens
+    contactFormStartTime = Math.floor(Date.now() / 1000); // Track form start time as Unix timestamp for API
 }
 
 function closeContactDialog() {
@@ -196,13 +214,14 @@ function closeContactDialog() {
     document.getElementById('contactErrorMessage').classList.add('hidden');
     document.getElementById('contactSubmitBtn').disabled = false;
     document.getElementById('contactSubmitBtn').textContent = 'Send Message';
+    contactFormStartTime = null; // Reset form start time
 }
 
 // Contact form handling with bot protection
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('contactSubmitBtn');
@@ -228,46 +247,78 @@ function initContactForm() {
             const selectedOption = subjectSelect.options[subjectSelect.selectedIndex];
             
             const formData = {
-                name: document.getElementById('contactName').value,
-                email: document.getElementById('contactEmail').value,
-                phone: document.getElementById('contactPhone').value,
-                subject: selectedOption.value, // This will be the UUID
-                subjectLabel: selectedOption.textContent, // Human-readable label for display
-                message: document.getElementById('contactMessage').value
+                name: document.getElementById('contactName').value.trim(),
+                email: document.getElementById('contactEmail').value.trim(),
+                phone: document.getElementById('contactPhone').value.trim() || null,
+                subject_uuid: selectedOption.value, // API expects subject_uuid
+                message: document.getElementById('contactMessage').value.trim(),
+                form_start_time: contactFormStartTime,
+                user_agent: navigator.userAgent,
+                ip_address: await getClientIP()
             };
             
-            // Simulate sending email (replace with actual email service)
-            setTimeout(() => {
-                // Create mailto link as fallback
-                const mailtoLink = `mailto:leong.shi.yun@gmail.com?subject=${encodeURIComponent(formData.subjectLabel)}&body=${encodeURIComponent(
-                    `Name: ${formData.name}\n` +
-                    `Email: ${formData.email}\n` +
-                    (formData.phone ? `Phone: ${formData.phone}\n` : '') +
-                    `Subject: ${formData.subjectLabel}\n` +
-                    `Subject ID: ${formData.subject}\n\n` +
-                    `Message:\n${formData.message}`
-                )}`;
-                
-                // Open email client
-                window.location.href = mailtoLink;
-                
-                console.log('Contact form submitted:', formData);
-                successMessage.classList.remove('hidden');
-                
-                // Close dialog after 2 seconds
-                setTimeout(() => {
-                    closeContactDialog();
-                }, 2000);
-            }, 1000);
+            // Submit to API
+            submitContactForm(formData, submitBtn, errorMessage, successMessage);
         });
+    }
+}
+
+// Submit contact form to API
+async function submitContactForm(formData, submitBtn, errorMessage, successMessage) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/contact/submit`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Success
+            console.log('Contact form submitted successfully:', result);
+            successMessage.textContent = result.message || 'Thank you! Your message has been sent successfully.';
+            successMessage.classList.remove('hidden');
+            
+            // Close dialog after 3 seconds
+            setTimeout(() => {
+                closeContactDialog();
+            }, 3000);
+        } else {
+            // API returned an error
+            console.error('Contact form submission failed:', result);
+            
+            // Display specific error messages if available
+            if (result.errors) {
+                const errorMessages = Object.values(result.errors).flat();
+                errorMessage.textContent = errorMessages.join(' ');
+            } else if (result.message) {
+                errorMessage.textContent = result.message;
+            } else {
+                errorMessage.textContent = 'Please check your information and try again.';
+            }
+            
+            errorMessage.classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    } catch (error) {
+        console.error('Network error submitting contact form:', error);
+        errorMessage.textContent = 'Network error. Please check your connection and try again.';
+        errorMessage.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
     }
 }
 
 function isValidContactSubmission() {
     // Check honeypot fields
-    const websiteUrl = document.getElementById('website_url').value;
-    const backupEmail = document.getElementById('backup_email').value;
-    if (websiteUrl || backupEmail) {
+    const website = document.getElementById('website').value;
+    const phoneNumber = document.getElementById('phone_number').value;
+    if (website || phoneNumber) {
         console.log('Bot detected: contact honeypot field filled');
         return false;
     }
@@ -289,11 +340,18 @@ function isValidContactSubmission() {
     // Validate required fields
     const name = document.getElementById('contactName').value.trim();
     const email = document.getElementById('contactEmail').value.trim();
-    const subject = document.getElementById('contactSubject').value.trim();
+    const subjectSelect = document.getElementById('contactSubject');
+    const subject = subjectSelect.value.trim();
     const message = document.getElementById('contactMessage').value.trim();
     
     if (!name || !email || !subject || !message) {
         console.log('Missing required fields');
+        return false;
+    }
+    
+    // Check if form start time is available (required by API)
+    if (!contactFormStartTime) {
+        console.log('Form start time not available');
         return false;
     }
     
